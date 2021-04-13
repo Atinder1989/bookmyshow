@@ -1,0 +1,6 @@
+framework module Pods_BookMyShowAssignmentTests {
+  umbrella header "Pods-BookMyShowAssignmentTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

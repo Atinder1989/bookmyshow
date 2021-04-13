@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_BookMyShowAssignment_BookMyShowAssignmentUITests : NSObject
+@end
+@implementation PodsDummy_Pods_BookMyShowAssignment_BookMyShowAssignmentUITests
+@end

@@ -1,0 +1,6 @@
+framework module Pods_BookMyShowAssignment {
+  umbrella header "Pods-BookMyShowAssignment-umbrella.h"
+
+  export *
+  module * { export * }
+}
