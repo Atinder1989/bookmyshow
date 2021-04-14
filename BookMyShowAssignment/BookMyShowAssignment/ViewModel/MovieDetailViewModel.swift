@@ -12,6 +12,7 @@ class MovieDetailViewModel:NSObject  {
     private let dispatchGroup = DispatchGroup()
     var movie :Movie!
     var dataClosure : (() -> Void)?
+    var activityIndicatorClosure : ((_ state:Bool) -> Void)?
     var routeToMovieDetailClosure : ((_ movie:Movie) -> Void)?
     var synopsisResponse: SynopsisResponse? = nil
     var reviewResponse: ReviewResponse? = nil
@@ -23,6 +24,9 @@ class MovieDetailViewModel:NSObject  {
 //MARK:- Public Methods
 extension MovieDetailViewModel {
     func getMovieDetailData() {
+        if let closure = self.activityIndicatorClosure {
+            closure(true)
+        }
         dispatchGroup.enter()
         getSynopsisData(movie: movie)
         dispatchGroup.enter()

@@ -13,6 +13,9 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var overviewTextView: UITextView!
     @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var starImageView: UIImageView!
+    @IBOutlet weak var castLbl: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     private var movieDetailViewModel = MovieDetailViewModel()
 
@@ -47,19 +50,27 @@ extension MovieDetailViewController {
                 }
             }
         }
+        
+        self.movieDetailViewModel.activityIndicatorClosure = {[weak self] state in
+            if let this = self {
+                DispatchQueue.main.async {
+                    this.activityIndicator.startAnimating()
+                }
+            }
+        }
+        
     }
     
     private func updateScreen() {
+        self.activityIndicator.stopAnimating()
         self.title = self.movieDetailViewModel.movie.title
         self.movieImageView.setImageWith(urlString: self.movieDetailViewModel.movie.poster_path)
         self.releaseDateLbl.text = "Release Date : \(self.movieDetailViewModel.movie.release_date)"
         self.ratingLbl.text = "\(self.movieDetailViewModel.movie.vote_average)"
         self.overviewTextView.text = self.movieDetailViewModel.movie.overview
+        self.starImageView.isHidden = false
+        self.castLbl.isHidden = false
         self.castCollectionView.reloadData()
-//        let gradient:CAGradientLayer = CAGradientLayer()
-//           gradient.frame.size = self.gradientView.frame.size
-//           gradient.colors = [UIColor.black.cgColor,UIColor.black.withAlphaComponent(0).cgColor] //Or any colors
-//        self.gradientView.layer.addSublayer(gradient)
         
     }
     
