@@ -2,7 +2,7 @@
 //  Movie.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -21,6 +21,24 @@ struct Movie: Codable {
     var video: Bool
     var vote_average: Double
     var vote_count: Int
+    var timestamp: Date?
+
+    init(){
+        adult = false
+        backdrop_path = ""
+        id = 0
+        original_language = ""
+        original_title = ""
+        overview = ""
+        popularity = 0.0
+        poster_path = ""
+        release_date = ""
+        title = ""
+        video = false
+        vote_average = 0.0
+        vote_count = 0
+        timestamp = nil
+    }
     
     init(from decoder:Decoder) throws {
         let container = try decoder.container(keyedBy: ServiceParsingKeys.self)
@@ -38,10 +56,8 @@ struct Movie: Codable {
         self.video = try container.decodeIfPresent(Bool.self, forKey: .video) ?? false
         self.vote_average = try container.decodeIfPresent(Double.self, forKey: .vote_average) ?? 0.0
         self.vote_count = try container.decodeIfPresent(Int.self, forKey: .vote_count) ?? 1
-
+        self.timestamp = nil
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+    
 }

@@ -2,7 +2,7 @@
 //  CreditResponse.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -14,9 +14,7 @@ struct CreditResponse: Codable {
         self.castList = try container.decodeIfPresent([Cast].self, forKey: .cast) ?? []
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+   
 }
 
 
@@ -36,7 +34,5 @@ struct Cast: Codable {
         self.profile_path = imagebaseUrl + path
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+    
 }

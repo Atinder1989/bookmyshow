@@ -6,7 +6,6 @@ target 'BookMyShowAssignment' do
   use_frameworks!
 
   # Pods for BookMyShowAssignment
-  pod 'MBProgressHUD', '~> 1.0.0'
   pod 'SDWebImage', '~> 5.0'
 
   target 'BookMyShowAssignmentTests' do

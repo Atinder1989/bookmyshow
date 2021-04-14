@@ -2,7 +2,7 @@
 //  SynopsisResponse.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -19,9 +19,7 @@ struct SynopsisResponse: Codable {
         self.productionCompanyList = try container.decodeIfPresent([SynopsisProductionCompany].self, forKey: .production_companies) ?? []
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+   
 }
 
 struct SynopsisProductionCompany: Codable {
@@ -38,9 +36,7 @@ struct SynopsisProductionCompany: Codable {
         self.origin_country = try container.decodeIfPresent(String.self, forKey: .origin_country) ?? ""
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+   
 }
 
 

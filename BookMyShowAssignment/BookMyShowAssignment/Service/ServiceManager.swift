@@ -2,7 +2,7 @@
 //  ServiceManager.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import UIKit
@@ -18,7 +18,6 @@ class ServiceManager: NSObject {
                     ServiceManager.processDataModalFromResponseData(service: service, model:T.self,data: data,error: error,responseProcessingBlock: responseProcessingBlock)
             }
         } else {
-            Utility.showAlert(title: "Information", message: "Please check your internet connection")
             let error: NSError = NSError.init(domain: "", code: 0,
                                                          userInfo: [NSLocalizedDescriptionKey: ""])
             responseProcessingBlock(nil, error)
@@ -36,7 +35,7 @@ class ServiceManager: NSObject {
         if let responseData = data
         {
             do{
-                let json = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String:Any]
+                _ = try JSONSerialization.jsonObject(with: responseData, options: .mutableContainers) as? [String:Any]
                 let jsonDecoder = JSONDecoder.init()
                 let parsingModel = try jsonDecoder.decode(model.self, from: responseData)
                 responseProcessingBlock(parsingModel, nil)

@@ -2,7 +2,7 @@
 //  ServiceParsingKeys.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -35,6 +35,7 @@ enum ServiceParsingKeys : String, CodingKey {
     case character     =   "character"
     case cast     =   "cast"
     case profile_path     =   "profile_path"
+    case timestamp     =   "timestamp"
 
     
 }

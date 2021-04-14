@@ -2,7 +2,7 @@
 //  AppRouter.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -10,6 +10,7 @@ import UIKit
 
 enum Route: String {
     case movieDetail
+    case search
     case none
 }
 
@@ -21,19 +22,21 @@ protocol Router {
    )
 }
 
-class AppRouter: Router {
-    private var viewModel: AppViewModel
-    init(viewModel: AppViewModel) {
-       self.viewModel = viewModel
-    }
-    
+class AppRouter: Router {   
     func route(to route: Route, from context: UIViewController, parameters: Any?) {
         switch route {
         case .movieDetail:
-            if let params = parameters {
-                if let movie = params as? Movie {
-                    let vc = self.getViewController(ofType: MovieDetailViewController.self)
+            if let params = parameters,let movie = params as? Movie {
+                if let vc = self.getViewController(ofType: MovieDetailViewController.self) {
                     vc.setMovie(movie: movie)
+                    context.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            break
+        case .search:
+            if let params = parameters,let movies = params as? [Movie] {
+                if let vc = self.getViewController(ofType: SearchViewController.self) {
+                    vc.setMovieList(movies: movies)
                     context.navigationController?.pushViewController(vc, animated: true)
                 }
             }
@@ -43,10 +46,12 @@ class AppRouter: Router {
         }
     }
     
-    
     // MARK: - Get ViewController From Storyboard
-    private func getViewController<T:UIViewController>(ofType viewController:T.Type) -> T
+    private func getViewController<T:UIViewController>(ofType viewController:T.Type) -> T?
     {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: type(of: T()))) as! T
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: String(describing: type(of: T()))) as? T {
+            return vc
+        }
+        return nil
     }
 }

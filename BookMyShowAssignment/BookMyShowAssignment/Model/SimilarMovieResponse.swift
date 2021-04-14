@@ -2,7 +2,7 @@
 //  SimilarMovieResponse.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -15,7 +15,4 @@ struct SimilarMovieResponse: Codable {
         self.movieList = try container.decodeIfPresent([Movie].self, forKey: .results) ?? []
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
 }

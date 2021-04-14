@@ -2,7 +2,7 @@
 //  ReviewResponse.swift
 //  BookMyShowAssignment
 //
-//  Created by Savleen on 13/04/21.
+//  Created by Atinder on 13/04/21.
 //
 
 import Foundation
@@ -16,9 +16,7 @@ struct ReviewResponse: Codable {
         self.reviewList = try container.decodeIfPresent([Review].self, forKey: .results) ?? []
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+   
 }
 
 
@@ -31,9 +29,7 @@ struct Review: Codable {
         self.content = try container.decodeIfPresent(String.self, forKey: .content) ?? ""
     }
 
-    func encode(to encoder: Encoder) throws {
-
-    }
+   
 }
 
 
